@@ -42,14 +42,34 @@ def get_compiled_training_set(file_path: str, lang_short_hand: str) -> list:
             words = words[15:]
     return training_data
 
+def put_lines_into_file(file_path: str, lines: list):
+    try:
+        file = open(file_path, 'w')
+        for line in lines:
+            file.writelines(line + '\n')
+    except IOError as e:
+        print('File error!')
+        print(e)
+    except Exception as e:
+        print('Some other error!')
+        print(e)
+    finally:
+        if not file.closed:
+            file.close()
+
+
+def put_training_data_into_file(file_path: str, training_data: list):
+    put_lines_into_file(file_path, training_data)
+
+
+
 
 def main():
     en_training_data = get_compiled_training_set('./input/en_pre_train.txt', LANGUAGE['ENGLISH'])
     nl_training_data = get_compiled_training_set('./input/nl_pre_train.txt', LANGUAGE['DUTCH'])
     training_data = en_training_data + nl_training_data
     random.shuffle(training_data)
-    print(training_data[:15])
-
+    put_training_data_into_file('./input/train.dat', training_data)
 
 if __name__ == "__main__":
     main()

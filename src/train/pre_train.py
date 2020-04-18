@@ -4,8 +4,9 @@ import random
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from common.constants import LANGUAGE, \
-                        EN_PRE_TRAINING_DATA_FILE_PATH, \
-                        NL_PRE_TRAINING_DATA_FILE_PATH
+                            EN_PRE_TRAINING_DATA_FILE_PATH, \
+                            NL_PRE_TRAINING_DATA_FILE_PATH, \
+                            TRAINING_DATA_FILE_PATH
 from file_ops.reader import get_lines_from_file
 from file_ops.writer import put_lines_into_file         
 
@@ -41,7 +42,7 @@ def main():
     nl_training_data = get_compiled_training_set(NL_PRE_TRAINING_DATA_FILE_PATH, LANGUAGE['DUTCH'])
     training_data = en_training_data + nl_training_data
     random.shuffle(training_data)
-    put_training_data_into_file('./input/train/train.dat', training_data)
+    put_training_data_into_file(TRAINING_DATA_FILE_PATH, training_data)
 
 
 if __name__ == "__main__":

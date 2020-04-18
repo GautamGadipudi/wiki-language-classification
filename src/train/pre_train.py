@@ -3,9 +3,12 @@ import os, sys
 import random
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from constants import LANGUAGE
+from common.constants import LANGUAGE, \
+                        EN_PRE_TRAINING_DATA_FILE_PATH, \
+                        NL_PRE_TRAINING_DATA_FILE_PATH
 from file_ops.reader import get_lines_from_file
 from file_ops.writer import put_lines_into_file         
+
 
 def get_list_of_words(sentence: str) -> list:
     word_list = re.sub('[^A-Za-z ]+', '', sentence) \
@@ -34,11 +37,12 @@ def put_training_data_into_file(file_path: str, training_data: list):
 
 
 def main():
-    en_training_data = get_compiled_training_set('./input/pre_train/en_pre_train.txt', LANGUAGE['ENGLISH'])
-    nl_training_data = get_compiled_training_set('./input/pre_train/nl_pre_train.txt', LANGUAGE['DUTCH'])
+    en_training_data = get_compiled_training_set(EN_PRE_TRAINING_DATA_FILE_PATH, LANGUAGE['ENGLISH'])
+    nl_training_data = get_compiled_training_set(NL_PRE_TRAINING_DATA_FILE_PATH, LANGUAGE['DUTCH'])
     training_data = en_training_data + nl_training_data
     random.shuffle(training_data)
     put_training_data_into_file('./input/train/train.dat', training_data)
+
 
 if __name__ == "__main__":
     main()

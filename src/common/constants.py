@@ -1,5 +1,3 @@
-from enum import Enum
-
 # train args
 class TRAIN_ARGS:
     INDEX_OF = {
@@ -16,9 +14,8 @@ class TEST_ARGS:
         'file': 2
     }
     COUNT = len(INDEX_OF)
-TEST_ARG_COUNT = 2
 
-
+# language shorthand
 LANGUAGE = {
     'ENGLISH': 'en', 
     'DUTCH': 'nl'

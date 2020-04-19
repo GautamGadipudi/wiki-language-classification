@@ -8,17 +8,8 @@ from common.constants import LANGUAGE, \
                             NL_PRE_TRAINING_DATA_FILE_PATH, \
                             TRAINING_DATA_FILE_PATH
 from file_ops.reader import get_lines_from_file
-from file_ops.writer import put_lines_into_file         
-
-
-def get_list_of_words(sentence: str) -> list:
-    word_list = re.sub('[^A-Za-záéíóúàèëïöüĳÁÉÍÓÚÀÈËÏÖÜĲ ]+', '', sentence) \
-                    .lower() \
-                    .strip() \
-                    .split()
-    
-    return word_list
-                                            
+from file_ops.writer import put_lines_into_file    
+from common.util import get_list_of_words     
 
 def get_compiled_training_set(file_path: str, lang_short_hand: str) -> list:
     lines = get_lines_from_file(file_path)

@@ -1,6 +1,7 @@
 from sys import argv
+import re
 
-from common.constants import TRAIN_ARGS
+from common.constants import TRAIN_ARGS, TEST_ARGS
 from file_ops.reader import get_lines_from_file
 from common.features import is_feature_0,\
                             is_feature_1,\
@@ -36,9 +37,36 @@ def get_training_cmd_params():
     return training_data_file, hypothesis_out_file, learning_type
 
 
-def get_featured_dataset(sentence, label=None):
+def get_testing_cmd_params():
+    testing_data_file = hypothesis_in_file = ''
+    if len(argv) > TEST_ARGS.COUNT:
+        testing_data_file \
+            = argv[TEST_ARGS.INDEX_OF['file']]
+        hypothesis_in_file = \
+            argv[TEST_ARGS.INDEX_OF['hypothesis']]
+    elif len(argv) == TRAIN_ARGS.COUNT:
+        hypothesis_in_file = \
+            argv[TEST_ARGS.INDEX_OF['hypothesis']]
+        testing_data_file = input('Please enter predicting/testing data file: ')
+    else:
+        hypothesis_in_file = input('Please enter hypothesis pickle file: ')
+        testing_data_file = input('Please enter predicting/testing data file: ')
+    
+    return hypothesis_in_file, testing_data_file
+
+
+def get_list_of_words(sentence: str) -> list:
+    word_list = re.sub('[^A-Za-záéíóúàèëïöüĳÁÉÍÓÚÀÈËÏÖÜĲ ]+', '', sentence) \
+                    .lower() \
+                    .strip() \
+                    .split()
+    
+    return word_list
+
+
+def get_featured_row(sentence, label=None):
     result = []
-    words = sentence.split()
+    words = get_list_of_words(sentence)
     result.append(is_feature_0(words))
     result.append(is_feature_1(words))
     result.append(is_feature_2(words))
@@ -52,14 +80,19 @@ def get_featured_dataset(sentence, label=None):
 
     return result
 
-def get_parsed_dataset(rows):
+def get_parsed_dataset(rows, is_training_file=False):
     result = []
     for row in rows:
-        [label, sentence] = row.split('|')
-        result.append(get_featured_dataset(sentence, label))
+        label = None
+        sentence = ''
+        if is_training_file:
+            [label, sentence] = row.split('|')
+        else:
+            sentence = row
+        result.append(get_featured_row(sentence, label))
     return result
 
 
-def get_training_data(file_path):
+def get_featured_dataset(file_path, is_training_file=False):
     lines = get_lines_from_file(file_path)
-    return get_parsed_dataset(lines)
+    return get_parsed_dataset(lines, is_training_file)

@@ -1,6 +1,6 @@
 def get_lines_from_file(file_path: str) -> list:
     try:
-        file = open(file_path, 'r', encoding='utf-8')
+        file = open(file_path, 'r', encoding='latin-1')
         lines = file.readlines()
         return lines
     except IOError as e:

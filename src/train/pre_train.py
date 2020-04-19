@@ -12,7 +12,7 @@ from file_ops.writer import put_lines_into_file
 
 
 def get_list_of_words(sentence: str) -> list:
-    word_list = re.sub('[^A-Za-z ]+', '', sentence) \
+    word_list = re.sub('[^A-Za-záéíóúàèëïöüĳÁÉÍÓÚÀÈËÏÖÜĲ ]+', '', sentence) \
                     .lower() \
                     .strip() \
                     .split()

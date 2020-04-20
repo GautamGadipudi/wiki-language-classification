@@ -21,6 +21,12 @@ LANGUAGE = {
     'DUTCH': 'nl'
 }
 
+# learning types
+LEARNING_TYPE = {
+    'DECISION_TREE': 'dt',
+    'ADABOOST': 'ada'
+}
+
 # file paths
 EN_PRE_TRAINING_DATA_FILE_PATH = f"./input/pre_train/{LANGUAGE['ENGLISH']}_pre_train.txt"
 NL_PRE_TRAINING_DATA_FILE_PATH = f"./input/pre_train/{LANGUAGE['DUTCH']}_pre_train.txt"

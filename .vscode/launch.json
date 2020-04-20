@@ -4,6 +4,16 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [{
+            "name": "Train ADA",
+            "type": "python",
+            "request": "launch",
+            "program": "./src/train/train.py",
+            "console": "integratedTerminal",
+            "args": [
+                "./input/train/train.dat", "./output/train/ada_node.p", "ada"
+            ]
+        },
+        {
             "name": "Test",
             "type": "python",
             "request": "launch",

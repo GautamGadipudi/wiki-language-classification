@@ -4,10 +4,13 @@ import random
 from dt.util import get_gini_impurity, get_info_gain, get_label_count, is_numeric
 from dt.class_util import get_best_split
 from dt.classes import Question, DecisionNode
+from ada.classes import Stump
+
 
 class Stump:
     __slots__ = ['question']
     
+
     def __init__(self, question):
         self.question = question
 
@@ -42,7 +45,8 @@ def ada_boost(rows):
             z[k] = 0
         else:
             z[k] = math.log((1 - error) / error)
-    return h, z
+    hypothesis = [(h[k], z[k]) for k in range(feature_count)]
+    return hypothesis
 
 
 def normalize_weights(weights):

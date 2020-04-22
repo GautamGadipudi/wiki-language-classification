@@ -2,7 +2,7 @@ import pickle
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from dt.class_util import classify
+from common.util import classify
 from common.util import get_featured_dataset, get_testing_cmd_params
 
 
@@ -16,3 +16,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

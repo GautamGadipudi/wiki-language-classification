@@ -13,8 +13,8 @@ def main():
     training_data_file, hypothesis_out_file, learning_type = get_training_cmd_params()
     training_data = get_featured_dataset(training_data_file, True)
     if learning_type == LEARNING_TYPE['ADABOOST']:
-        h, z = ada_boost(training_data)
-        pickle.dump((h, z), open(hypothesis_out_file, 'wb'))
+        hypothesis = ada_boost(training_data)
+        pickle.dump(hypothesis, open(hypothesis_out_file, 'wb'))
     else:
         node = build_tree(training_data)
         print_tree(node)

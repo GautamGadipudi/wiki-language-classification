@@ -1,7 +1,7 @@
 from sys import argv
 import re
 
-from common.constants import TRAIN_ARGS, TEST_ARGS
+from common.constants import TRAIN_ARGS, TEST_ARGS, LANGUAGE
 from file_ops.reader import get_lines_from_file
 from common.features import is_feature_0,\
                             is_feature_1,\
@@ -9,6 +9,10 @@ from common.features import is_feature_0,\
                             is_feature_3,\
                             is_feature_4,\
                             is_feature_5
+from ada.util import ada_classify
+from dt.util import predict
+from dt.classes import Leaf
+
 
 def get_training_cmd_params():
     training_data_file = hypothesis_out_file = learning_type = ''
@@ -96,3 +100,25 @@ def get_parsed_dataset(rows, is_training_file=False):
 def get_featured_dataset(file_path, is_training_file=False):
     lines = get_lines_from_file(file_path)
     return get_parsed_dataset(lines, is_training_file)
+
+
+def classify(row, node) -> list:
+    """
+    Classify an example into a class/classes.
+    :param row: Example/testing data
+    :type row: list
+    :param node: Node which has question/prediction
+    :type node: DecisionNode or Leaf
+    :return: List of possible classes
+    :rtype: list
+    """
+    if isinstance(node, list): #ADA
+        return ada_classify(row, trees=node)
+    else: #DT
+        if isinstance(node, Leaf):
+            return predict(node.predictions)
+
+        if node.question.match(row):
+            return classify(row, node.true_branch)
+        else:
+            return classify(row, node.false_branch)

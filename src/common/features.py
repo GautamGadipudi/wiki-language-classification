@@ -49,3 +49,45 @@ def is_feature_5(words: list):
         if word in __feature.COMMON_EN_WORDS:
             return True
     return False
+
+
+def is_feature_6(words: list):
+    __feature = FEATURES.FEATURE_6
+    sum = 0
+    for word in words:
+        word_length = len(word)
+        sum += word_length
+    
+    avg_word_length = sum / len(words)
+    if avg_word_length >= __feature.AVG_WORD_LENGTH:
+        return True
+    return False
+
+
+def is_feature_7(words: list):
+    __feature = FEATURES.FEATURE_7
+    two_char_word_count = 0
+    for word in words:
+        if len(word) == 2:
+            two_char_word_count += 1
+    if two_char_word_count / len(words) >= __feature.AVG_FREQ:
+        return True
+    return False
+
+
+def is_feature_8(words: list):
+    __feature = FEATURES.FEATURE_8
+    for word in words:
+        for bigram in __feature.COMMON_BIGRAMS:
+            if bigram in word:
+                return True
+    return False
+
+
+def is_feature_9(words: list):
+    __feature = FEATURES.FEATURE_9
+    for word in words:
+        for trigram in __feature.COMMON_TRIGRAMS:
+            if trigram in word:
+                return True
+    return False 

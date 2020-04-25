@@ -3,12 +3,16 @@ import re
 
 from common.constants import TRAIN_ARGS, TEST_ARGS, LANGUAGE
 from file_ops.reader import get_lines_from_file
-from common.features import is_feature_0,\
-                            is_feature_1,\
-                            is_feature_2,\
-                            is_feature_3,\
-                            is_feature_4,\
-                            is_feature_5
+from common.features import is_feature_0, \
+                            is_feature_1, \
+                            is_feature_2, \
+                            is_feature_3, \
+                            is_feature_4, \
+                            is_feature_5, \
+                            is_feature_6, \
+                            is_feature_7, \
+                            is_feature_8, \
+                            is_feature_9
 from ada.util import ada_classify
 from dt.util import predict
 from dt.classes import Leaf
@@ -77,6 +81,10 @@ def get_featured_row(sentence, label=None):
     result.append(is_feature_3(words))
     result.append(is_feature_4(words))
     result.append(is_feature_5(words))
+    result.append(is_feature_6(words))
+    result.append(is_feature_7(words))
+    result.append(is_feature_8(words))
+    result.append(is_feature_9(words))
 
     # For testing features
     if label is not None:
@@ -108,7 +116,7 @@ def classify(row, node) -> list:
     :param row: Example/testing data
     :type row: list
     :param node: Node which has question/prediction
-    :type node: DecisionNode or Leaf
+    :type node: Adaboost hypo or DecisionNode or Leaf
     :return: List of possible classes
     :rtype: list
     """

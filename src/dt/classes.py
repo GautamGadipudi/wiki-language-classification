@@ -26,7 +26,7 @@ class Question:
         comparator = '=='
         if is_numeric(self.value):
             comparator = '>='
-        return f'{self.column} {comparator} {self.value}?'
+        return f'col{self.column} {comparator} {self.value}?'
 
 
 class Leaf:

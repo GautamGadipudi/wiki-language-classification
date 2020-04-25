@@ -14,6 +14,8 @@ def main():
     training_data = get_featured_dataset(training_data_file, True)
     if learning_type == LEARNING_TYPE['ADABOOST']:
         hypothesis = ada_boost(training_data)
+        for h in hypothesis:
+            print(f"Stump: {h[0].question}, Z: {h[1]}")
         pickle.dump(hypothesis, open(hypothesis_out_file, 'wb'))
     else:
         node = build_tree(training_data)

@@ -87,3 +87,36 @@ class FEATURES:
             'these' ,'they' ,'thing' ,'think' ,'this' ,'those' ,'time' ,'to' ,\
             'two' ,'up' ,'use' ,'very' ,'want' ,'way' ,'we' ,'well' ,'what' ,\
             'when' ,'which' ,'who' ,'will' ,'with' ,'would' ,'year' ,'you' ,'your']
+
+    class FEATURE_6:
+        NAME = 'Average word length'
+        AVG_WORD_LENGTH = 4.25
+
+    class FEATURE_7:
+        NAME = '2 letter word freq.'
+        AVG_FREQ = 0.2
+
+    class FEATURE_8:
+        NAME = 'Has common bigrams'
+        COMMON_BIGRAMS = ['th', 'er', 'on', 'an']
+
+    class FEATURE_9:
+        NAME = 'Has common trigrams'
+        COMMON_TRIGRAMS = [
+            'the',
+            'and',
+            'tha',
+            'ent',
+            'ing',
+            'ion',
+            'tio',
+            'for',
+            'nde',
+            'has',
+            'nce',
+            'edt',
+            'tis',
+            'oft',
+            'sth',
+            'men'
+        ]

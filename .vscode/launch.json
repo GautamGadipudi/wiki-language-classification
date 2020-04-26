@@ -11,7 +11,7 @@
             "program": "./src/test/test.py",
             "console": "integratedTerminal",
             "args": [
-                "./output/train/ada_node.p", "./input/test/test.dat"
+                "./output/ada_node.p", "./input/test/test.dat"
             ]
         },
         {
@@ -21,7 +21,7 @@
             "program": "./src/train/train.py",
             "console": "integratedTerminal",
             "args": [
-                "./input/train/train.dat", "./output/train/ada_node.p", "ada"
+                "./input/train/train.dat", "./output/ada_node.p", "ada"
             ]
         },
         {
@@ -31,7 +31,7 @@
             "program": "./src/test/test.py",
             "console": "integratedTerminal",
             "args": [
-                "./output/train/tree_node.p", "./input/test/test.dat"
+                "./output/tree_node.p", "./input/test/test.dat"
             ]
         },
         {
@@ -41,7 +41,7 @@
             "program": "./src/train/train.py",
             "console": "integratedTerminal",
             "args": [
-                "./input/train/train.dat", "./output/train/tree_node.p", "dt"
+                "./input/train/train.dat", "./output/tree_node.p", "dt"
             ]
         }
     ]

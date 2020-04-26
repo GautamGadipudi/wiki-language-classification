@@ -1,6 +1,6 @@
 from common.constants import FEATURES
 
-def is_feature_0(words: list):
+def is_feature_0(words: list) -> bool:
     __feature = FEATURES.FEATURE_0
     count = 0
     for word in words:
@@ -11,7 +11,7 @@ def is_feature_0(words: list):
     return False
 
 
-def is_feature_1(words: list):
+def is_feature_1(words: list) -> bool:
     __feature = FEATURES.FEATURE_1
     for word in words:
         if word in __feature.STRINGS:
@@ -19,7 +19,7 @@ def is_feature_1(words: list):
     return False
 
 
-def is_feature_2(words: list):
+def is_feature_2(words: list) -> bool:
     __feature = FEATURES.FEATURE_2
     for word in words:
         if word == __feature.EN:
@@ -27,7 +27,7 @@ def is_feature_2(words: list):
     return False
 
 
-def is_feature_3(words: list):
+def is_feature_3(words: list) -> bool:
     __feature = FEATURES.FEATURE_3
     for word in words:
         if word == __feature.AND:
@@ -35,7 +35,7 @@ def is_feature_3(words: list):
     return False
 
 
-def is_feature_4(words: list):
+def is_feature_4(words: list) -> bool:
     __feature = FEATURES.FEATURE_4
     for word in words:
         if word in __feature.COMMON_NL_WORDS:
@@ -43,7 +43,7 @@ def is_feature_4(words: list):
     return False
 
 
-def is_feature_5(words: list):
+def is_feature_5(words: list) -> bool:
     __feature = FEATURES.FEATURE_5
     for word in words:
         if word in __feature.COMMON_EN_WORDS:
@@ -51,7 +51,7 @@ def is_feature_5(words: list):
     return False
 
 
-def is_feature_6(words: list):
+def is_feature_6(words: list) -> bool:
     __feature = FEATURES.FEATURE_6
     sum = 0
     for word in words:
@@ -64,7 +64,7 @@ def is_feature_6(words: list):
     return False
 
 
-def is_feature_7(words: list):
+def is_feature_7(words: list) -> bool:
     __feature = FEATURES.FEATURE_7
     two_char_word_count = 0
     for word in words:
@@ -75,7 +75,7 @@ def is_feature_7(words: list):
     return False
 
 
-def is_feature_8(words: list):
+def is_feature_8(words: list) -> bool:
     __feature = FEATURES.FEATURE_8
     for word in words:
         for bigram in __feature.COMMON_BIGRAMS:
@@ -84,7 +84,7 @@ def is_feature_8(words: list):
     return False
 
 
-def is_feature_9(words: list):
+def is_feature_9(words: list) -> bool:
     __feature = FEATURES.FEATURE_9
     for word in words:
         for trigram in __feature.COMMON_TRIGRAMS:
